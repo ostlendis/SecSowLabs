@@ -12,7 +12,32 @@ $3 = {<text variable, no debug info>} 0xf7e04f80 <exit>
 ```
 as we can see the addresses of the system() and exit() functions are at 0xf7e12420 and 0xf7e04f80 respectively.
 
+## Step2
+We set the MYSHELL environment variable to "/bin/sh" with ```export MYSHELL=/bin/sh``` and verify that it worked with ```env | grep MYSHELL```:
+```
+MYSHELL=/bin/sh
+```
+using this program in prtenv.c:
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+void main(){
+    char* shell = getenv("MYSHELL");
+    if (shell)
+    printf("%x\n", (unsigned int)shell);
+}
+```
+
+we can compile it with ```gcc -m32 -z noexecstack -fno-stack-protector -o prtenv prtenv.c``` and then run it, we get the memory address ```ffffd77f```. If we also include the snippet in the retlib.c program, recompile it and run it, we also get the same address ```ffffd77f```.
+
+## Step 3
+shit doesn't work with values in pyhton file :(
+
 ### what to document: 
 - all the steps you take to exploit the vulnerability
 - documentation of the solved tasks
 - answer to the Security Questions
+
+how to compile the c files:
+gcc -m32 -z noexecstack -fno-stack-protector -o test test.c
