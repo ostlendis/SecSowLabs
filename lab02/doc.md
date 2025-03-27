@@ -1,4 +1,10 @@
-# Lab 2
+---
+title: "Lab2"
+author: "Silvan Lendi, Fabio Zahner"
+date: "27. March 2025"
+documentclass: report
+---
+
 Before starting we set up the seedVM according to the instructions and uploaded the resource data to the VM.
 
 ## Step 1
