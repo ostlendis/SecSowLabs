@@ -60,10 +60,9 @@ Now if we run the exploit.py file, it will create a badfile filled with padding 
 This badfile is now used in the retlib executable in the bof() function. In the bof() function, there is a strcpy() function that copies the contents from the file into the buffer. Since strcpy() does not implement any buffer overflow checks, the buffer will be overwritten in the stack so that the return address is now equal to the system() function address. Following are the addresses of /bin/sh and finally exit()  
 So when the function returns, it won't return normally but to the system() function which will use /bin/sh as an argument and execute it. We also need a exit() function at the end or there will be a segmentation fault.
 
-This is the content of the badfile:
-```
-���������������������������������������������� $���O�������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
-```
+This is the content of the badfile(dont mind the buggy prompt at the end of the output):
+
+![badfile content](./images/badfile.png)
 
 ## Step 4
 ### Attack variation 1:
