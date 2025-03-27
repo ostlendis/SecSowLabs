@@ -1,5 +1,5 @@
 ---
-title: "Lab2"
+title: "Lab 2"
 author: "Silvan Lendi, Fabio Zahner"
 date: "27. March 2025"
 documentclass: report
